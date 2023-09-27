@@ -6,13 +6,15 @@ from sklearn.ensemble import RandomForestClassifier
 def load_DataSet(file):
     if file.endswith('.csv'):
         data = pd.read_csv(file)
+        return data
     elif file.endswith('.xlsx'):
         data = pd.read_excel(file)
+        return data
     else:
         print("error , the file path invalid")
         return 0
     
-    return data
+    
 def feature_selection(file):
   pass
 # Dimensionality reduction with PCA
