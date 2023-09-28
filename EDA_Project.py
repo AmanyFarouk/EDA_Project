@@ -59,7 +59,7 @@ def visualization(file):
    for col in file.columns:
         col2 = str(col)
         plot=''
-        if file[col2].dtype == 'object':
+        if file[col].dtype == 'object':
            plot = input ('please enter  bar or pie : ')
         else :
            plot = input ('please enter hist or pie or bar : ')
