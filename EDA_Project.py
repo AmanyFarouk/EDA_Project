@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from sklearn.ensemble import RandomForestClassifier
 # read the file in csv format or excel
 def load_DataSet(file):
     if file.endswith('.csv'):
@@ -54,35 +53,20 @@ def preProcess(file):
     return df
 #visualization
 def visualization(file):
-  # to visualize numerical data :(hist , pie , bar)
+  # to visualize numerical data :(hist , pie)
   # to visualize categorical data : (pie, bar)
    for col in file.columns:
         col2 = str(col)
-        plot=''
-        if file[col].dtype == 'object':
-           plot = input ('please enter  bar or pie : ')
-        else :
-           plot = input ('please enter hist or pie or bar : ')
-        #
-        if plot == 'hist':
-            plt.hist(file[col])
-            plt.title(f"Histogram of column '{col2}'")
-            plt.show()
-            
-        elif plot == 'bar':
-            counts = file[col].value_counts()
-            plt.bar(counts.index, counts.values)
-            plt.title(f"Bar chart of column '{col2}'")
-            plt.show()
-            
-        elif plot == 'pie':
+        if file[col2].dtype == 'object':
             counts = file[col].value_counts()
             plt.pie(counts.values, labels=counts.index, autopct='%1.1f%%')
             plt.title(f"Pie chart of column '{col2}'")
             plt.show()
-            
-        else:
-            print(f"Invalid plot type. Skipping visualization for column '{col2}'.")
+        else :
+            #numberical features
+            plt.hist(file[col])
+            plt.title(f"Histogram of column '{col2}'")
+            plt.show()
     
        
         
